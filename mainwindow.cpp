@@ -45,6 +45,7 @@ void MainWindow::doConnection(QString host, int port, QString database_name, QSt
         showMessage(lastError);
 
     };
+    this->uiElementsWatch();
 }
 
 void MainWindow::initialView(TableList choice)
@@ -121,6 +122,10 @@ void MainWindow::removeRowFrom(TableList choice)
         MV.md->removeRow( index.row()  );
      }
 
+    MV.tv->clearSelection();
+    MV.md->submit();
+    MV.md->select();
+
 
 
 }
@@ -160,11 +165,33 @@ PairedMV MainWindow::getByEnum(TableList t)
     return Result;
 }
 
+void MainWindow::uiElementsWatch()
+{
+      ui->btnConnect->setEnabled(!db.isOpen());
+      ui->btnDisconnect->setEnabled(db.isOpen());
+
+      ui->tvManagers->setEnabled( db.isOpen() );
+      ui->tvClients->setEnabled( db.isOpen() );
+      ui->tvTasks->setEnabled( db.isOpen() );
+
+      ui->btnRemoveFromTasks->setEnabled(db.isOpen());
+      ui->btnDeleteFromClients->setEnabled( db.isOpen());
+      ui->btnDeleteManager->setEnabled( db.isOpen());
+
+
+      QString text;
+
+      text = (!db.isOpen()) ?  "disconnected" : "connected";
+
+      ui->lbStatus->setText(text);
+}
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->uiElementsWatch();
 }
 
 MainWindow::~MainWindow()
@@ -214,7 +241,7 @@ void MainWindow::on_btnDeleteManager_clicked()
 
 void MainWindow::on_btnDeleteFromClients_clicked()
 {
-    showMessage("remove from clients");
+   //showMessage("remove from clients");
     removeRowFrom(TableList::CLIENTS);
 
 }
@@ -222,7 +249,16 @@ void MainWindow::on_btnDeleteFromClients_clicked()
 
 void MainWindow::on_btnRemoveFromTasks_clicked()
 {
-     showMessage("remove from tasks");
+   //  showMessage("remove from tasks");
      removeRowFrom(TableList::TASKS);
+}
+
+
+void MainWindow::on_btnDisconnect_clicked()
+{
+    if (db.isOpen()){
+        db.close();
+        this->uiElementsWatch();
+    }
 }
 

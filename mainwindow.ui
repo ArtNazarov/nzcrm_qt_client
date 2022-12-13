@@ -33,7 +33,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tabManagers">
      <attribute name="title">
@@ -216,6 +216,13 @@
         <widget class="QLineEdit" name="lePassword">
          <property name="text">
           <string>test_pass</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnDisconnect">
+         <property name="text">
+          <string>Отключить</string>
          </property>
         </widget>
        </item>

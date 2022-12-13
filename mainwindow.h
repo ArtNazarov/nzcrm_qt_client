@@ -37,6 +37,7 @@ public:
     void removeRowFrom(TableList choice);
     void showMessage(QString msg);
     PairedMV getByEnum(TableList t);
+    void uiElementsWatch();
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -51,6 +52,8 @@ private slots:
     void on_btnDeleteFromClients_clicked();
 
     void on_btnRemoveFromTasks_clicked();
+
+    void on_btnDisconnect_clicked();
 
 private:
     Ui::MainWindow *ui;
