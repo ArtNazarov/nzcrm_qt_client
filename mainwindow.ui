@@ -6,34 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>943</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btnConnect">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>390</y>
-      <width>251</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Подключиться к базе</string>
-    </property>
-   </widget>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <widget class="QTabWidget" name="tabTables">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>20</y>
-      <width>691</width>
-      <height>361</height>
+      <width>919</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -43,16 +39,26 @@
      <attribute name="title">
       <string>Tab 1</string>
      </attribute>
-     <widget class="QWidget" name="verticalLayoutWidget">
+     <widget class="QWidget" name="verticalLayoutWidget_2">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>661</width>
-        <height>311</height>
+        <width>881</width>
+        <height>341</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMaximumSize</enum>
+       </property>
+       <item>
+        <widget class="QPushButton" name="btnDeleteManager">
+         <property name="text">
+          <string>Удалить из базы</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QTableView" name="tvManagers"/>
        </item>
@@ -60,19 +66,32 @@
      </widget>
     </widget>
     <widget class="QWidget" name="tabClients">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <attribute name="title">
       <string>Tab 2</string>
      </attribute>
-     <widget class="QWidget" name="verticalLayoutWidget_2">
+     <widget class="QWidget" name="verticalLayoutWidget_3">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>671</width>
-        <height>311</height>
+        <width>891</width>
+        <height>371</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QPushButton" name="btnDeleteFromClients">
+         <property name="text">
+          <string>Удалить из клиентов</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QTableView" name="tvClients"/>
        </item>
@@ -83,18 +102,129 @@
      <attribute name="title">
       <string>Страница</string>
      </attribute>
-     <widget class="QWidget" name="verticalLayoutWidget_3">
+     <widget class="QWidget" name="verticalLayoutWidget_4">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>10</y>
-        <width>681</width>
-        <height>311</height>
+        <y>0</y>
+        <width>901</width>
+        <height>381</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QPushButton" name="btnRemoveFromTasks">
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QTableView" name="tvTasks"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabConnectionProps">
+     <attribute name="title">
+      <string>Страница</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>891</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMaximumSize</enum>
+       </property>
+       <item>
+        <widget class="QLabel" name="lbStatus">
+         <property name="text">
+          <string>not connected</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Host</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="leHost">
+         <property name="text">
+          <string>localhost</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Database</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="leDatabase">
+         <property name="text">
+          <string>laranotes</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Port Num</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lePortNum">
+         <property name="text">
+          <string>3306</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Username</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="leUsername">
+         <property name="text">
+          <string>test</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Password for base</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lePassword">
+         <property name="text">
+          <string>test_pass</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnConnect">
+         <property name="text">
+          <string>Подключиться к базе</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -106,7 +236,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>943</width>
      <height>25</height>
     </rect>
    </property>

@@ -3,9 +3,162 @@
 
 #include <QSqlQuery>
 #include <QTableView>
-#include <QSqlRelationalTableModel>
+#include <QSqlTableModel>
 #include <QDebug>
 #include <QSqlError>
+#include <QMessageBox>
+
+
+void MainWindow::doConnection(QString host, int port, QString database_name, QString username, QString password)
+{
+    if (""==host) return;
+    if (""==database_name) return;
+    if (""==username) return;
+    if (""==password) return;
+
+    db = QSqlDatabase::addDatabase("QMYSQL");
+
+    db.setHostName(host);
+    db.setPort(port);
+    db.setUserName(username);
+    db.setPassword(password);
+    db.setDatabaseName(database_name);
+
+    bool ok = db.open();
+    if (!ok){
+        msg = "database not opened";
+        lastError = db.lastError().text();
+        showMessage(lastError);
+        }
+    if (ok) {
+
+
+       initialView(  TableList::MANAGERS );
+       initialView( TableList::CLIENTS );
+       initialView( TableList::TASKS );
+
+
+
+   } else {
+        msg = "error in button connect";
+        lastError = db.lastError().text();
+        showMessage(lastError);
+
+    };
+}
+
+void MainWindow::initialView(TableList choice)
+{
+     QString tableName;
+     QSqlTableModel* md = new QSqlTableModel(this->parent(), db);
+     QTableView* tv;
+    switch (choice){
+
+    case TableList::MANAGERS : {
+        tableName = "managers";
+        this->mdManagers = md;
+        tv = this->ui->tvManagers;
+        break;
+    }
+    case TableList::CLIENTS : {
+        tableName = "clients";
+        this->mdClients = md;
+        tv = this->ui->tvClients;
+        break;
+    }
+    case TableList::TASKS : {
+        tableName = "tasks";
+        this->mdTasks = md;
+        tv = this->ui->tvTasks;
+        break;
+    };
+
+    };
+
+    md->setTable(tableName);
+    md->setEditStrategy(QSqlTableModel::OnFieldChange);
+    md->select();
+    tv->setModel(md);
+    tv->show();
+
+
+}
+
+void MainWindow::removeRowFrom(TableList choice)
+{
+
+
+    if (!db.isOpen())
+    {
+        showMessage("Database must be open");
+        return;
+    };
+
+
+
+    PairedMV MV = this->getByEnum(choice);
+
+
+
+    if ((MV.md==0)||(MV.tv==0)) {
+        showMessage("Error in removeRowFrom 103");
+        return;
+    }
+
+    if (!MV.tv->selectionModel()->hasSelection()){
+        showMessage("Not selected any row");
+        return;
+    }
+
+    QModelIndexList selection = MV.tv->selectionModel()->selectedRows();
+
+
+    for(int i=0; i< selection.count(); i++)
+    {
+        QModelIndex index = selection.at(i);
+        showMessage ( QString::number ( index.row() ) );
+        //showMessage(MV.md->tableName());
+        MV.md->removeRow( index.row()  );
+     }
+
+
+
+}
+
+void MainWindow::showMessage(QString msg)
+{
+    QMessageBox* msgBox = new QMessageBox();
+    msgBox->setWindowTitle("Info");
+    msgBox->setText(msg);
+    msgBox->setIcon(QMessageBox::Information);
+    msgBox->exec();
+    delete msgBox;
+}
+
+PairedMV MainWindow::getByEnum(TableList t)
+{
+    PairedMV Result;
+    switch (t){
+
+    case TableList::MANAGERS : {
+        Result.md = this->mdManagers;
+        Result.tv = this->ui->tvManagers;
+        break;
+    }
+    case TableList::CLIENTS : {
+        Result.md = this->mdClients;
+        Result.tv = this->ui->tvClients;
+        break;
+    }
+    case TableList::TASKS : {
+        Result.md = this->mdTasks;
+        Result.tv = this->ui->tvTasks;
+        break;
+    };
+
+    };
+    return Result;
+}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -29,56 +182,47 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-
 }
 
 
 void MainWindow::on_btnConnect_clicked()
 {
-    db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setPort(3306);
-    db.setUserName("test");
-    db.setPassword("test_pass");
-    db.setDatabaseName("laranotes");
+   int port = ui->lePortNum->text().toInt();
+   doConnection(
 
-    bool ok = db.open();
-    if (!ok){
+    ui->leHost->text(),
+    port,
+    ui->leDatabase->text(),
+    ui->leUsername->text(),
+    ui->lePassword->text()
 
-          _isValid = db.isValid();
-          msg = "database not opened";
-          lastError = db.lastError().text();
-       }
-    if (ok) {
-
-      mdClients = new QSqlRelationalTableModel(this->parent(), db);
-      mdClients->setTable("clients");
-      mdClients->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
-      mdClients->select();
+               );
+ if (db.isOpen()){
+     ui->lbStatus->setText("connected");
+ }
+}
 
 
-      mdManagers = new QSqlRelationalTableModel(this->parent(), db);
-      mdManagers->setTable("managers");
-      mdManagers->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
-      mdManagers->select();
+void MainWindow::on_btnDeleteManager_clicked()
+{
+
+    removeRowFrom(TableList::MANAGERS);
 
 
-      mdTasks = new QSqlRelationalTableModel(this->parent(), db);
-      mdTasks->setTable("tasks");
-      mdTasks->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
-      mdTasks->select();
+}
 
 
-      ui->tvManagers->setModel(mdManagers);
-      ui->tvManagers->show();
+void MainWindow::on_btnDeleteFromClients_clicked()
+{
+    showMessage("remove from clients");
+    removeRowFrom(TableList::CLIENTS);
 
-      ui->tvClients->setModel(mdClients);
-      ui->tvClients->show();
-
-      ui->tvTasks->setModel(mdTasks);
-      ui->tvTasks->show();
+}
 
 
-   } else { qDebug() << "Error"; };
+void MainWindow::on_btnRemoveFromTasks_clicked()
+{
+     showMessage("remove from tasks");
+     removeRowFrom(TableList::TASKS);
 }
 
