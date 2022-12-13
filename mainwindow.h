@@ -19,6 +19,8 @@ enum TableList{
     CLIENTS, MANAGERS, TASKS
 };
 
+
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -31,6 +33,7 @@ public:
     QSqlTableModel *mdManagers;
     QSqlTableModel *mdTasks;
     QSqlDatabase db;
+
 
     void doConnection(QString host, int port, QString database_name, QString username, QString password);
     void initialView( TableList choice);
@@ -54,6 +57,8 @@ private slots:
     void on_btnRemoveFromTasks_clicked();
 
     void on_btnDisconnect_clicked();
+
+    void on_btnAddManager_clicked();
 
 private:
     Ui::MainWindow *ui;

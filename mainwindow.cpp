@@ -7,7 +7,8 @@
 #include <QDebug>
 #include <QSqlError>
 #include <QMessageBox>
-
+#include <QSqlRecord>
+#include "managermodel.h"
 
 void MainWindow::doConnection(QString host, int port, QString database_name, QString username, QString password)
 {
@@ -17,6 +18,7 @@ void MainWindow::doConnection(QString host, int port, QString database_name, QSt
     if (""==password) return;
 
     db = QSqlDatabase::addDatabase("QMYSQL");
+
 
     db.setHostName(host);
     db.setPort(port);
@@ -176,7 +178,8 @@ void MainWindow::uiElementsWatch()
 
       ui->btnRemoveFromTasks->setEnabled(db.isOpen());
       ui->btnDeleteFromClients->setEnabled( db.isOpen());
-      ui->btnDeleteManager->setEnabled( db.isOpen());
+      ui->btnDeleteManager->setEnabled(db.isOpen());
+      ui->btnAddManager->setEnabled(db.isOpen());
 
 
       QString text;
@@ -192,12 +195,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->uiElementsWatch();
-}
+  }
 
 MainWindow::~MainWindow()
 {
 
-    if (db.isOpen()) { db.close(); }
+        if (db.isOpen()) { db.close(); };
+
 
     delete mdClients;
     delete mdManagers;
@@ -260,5 +264,15 @@ void MainWindow::on_btnDisconnect_clicked()
         db.close();
         this->uiElementsWatch();
     }
+}
+
+
+void MainWindow::on_btnAddManager_clicked()
+{
+    PairedMV MV = getByEnum(TableList::MANAGERS);
+    ManagerModel* mm = new ManagerModel();
+    mm->insert(db);
+    delete mm;
+    MV.md->select();
 }
 
