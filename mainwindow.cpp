@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QSqlRecord>
 #include "managermodel.h"
+#include "clientmodel.h"
 
 void MainWindow::doConnection(QString host, int port, QString database_name, QString username, QString password)
 {
@@ -180,6 +181,7 @@ void MainWindow::uiElementsWatch()
       ui->btnDeleteFromClients->setEnabled( db.isOpen());
       ui->btnDeleteManager->setEnabled(db.isOpen());
       ui->btnAddManager->setEnabled(db.isOpen());
+      ui->btnAddClient->setEnabled(db.isOpen());
 
 
       QString text;
@@ -273,6 +275,16 @@ void MainWindow::on_btnAddManager_clicked()
     ManagerModel* mm = new ManagerModel();
     mm->insert(db);
     delete mm;
+    MV.md->select();
+}
+
+
+void MainWindow::on_btnAddClient_clicked()
+{
+    PairedMV MV = getByEnum(TableList::CLIENTS);
+    ClientModel* cm = new ClientModel();
+    cm->insert(db);
+    delete cm;
     MV.md->select();
 }
 
