@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Добавление клиента в базу</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -43,7 +43,7 @@
    </property>
    <widget class="QWidget" name="tabMainProps">
     <attribute name="title">
-     <string>Tab 1</string>
+     <string>Основные</string>
     </attribute>
     <widget class="QWidget" name="formLayoutWidget">
      <property name="geometry">
@@ -160,7 +160,7 @@
    </widget>
    <widget class="QWidget" name="tabStatusProps">
     <attribute name="title">
-     <string>Tab 2</string>
+     <string>Статус</string>
     </attribute>
     <widget class="QWidget" name="formLayoutWidget_2">
      <property name="geometry">
@@ -227,7 +227,7 @@
    </widget>
    <widget class="QWidget" name="tabAdditionalProps">
     <attribute name="title">
-     <string>Страница</string>
+     <string>Дополнительно</string>
     </attribute>
     <widget class="QWidget" name="formLayoutWidget_3">
      <property name="geometry">
