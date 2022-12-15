@@ -10,6 +10,7 @@
 #include <QSqlRecord>
 #include "managermodel.h"
 #include "clientmodel.h"
+#include "faddmanager.h"
 
 void MainWindow::doConnection(QString host, int port, QString database_name, QString username, QString password)
 {
@@ -271,11 +272,24 @@ void MainWindow::on_btnDisconnect_clicked()
 
 void MainWindow::on_btnAddManager_clicked()
 {
-    PairedMV MV = getByEnum(TableList::MANAGERS);
-    ManagerModel* mm = new ManagerModel();
-    mm->insert(db);
-    delete mm;
-    MV.md->select();
+    fAddManager *dialog = new fAddManager();
+    dialog->show();
+    if ( dialog->exec() == QDialog::Accepted ){
+        PairedMV MV = getByEnum(TableList::MANAGERS);
+        ManagerModel* mm = new ManagerModel();
+        mm->fields = dialog->getModelRecord();
+        mm->insert(db);
+        delete mm;
+        MV.md->select();
+    }
+    else
+    {
+        showMessage("not added because canceled");
+    };
+
+
+
+
 }
 
 

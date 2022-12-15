@@ -10,16 +10,19 @@ CONFIG += c++17
 
 SOURCES += \
     clientmodel.cpp \
+    faddmanager.cpp \
     main.cpp \
     mainwindow.cpp \
     managermodel.cpp
 
 HEADERS += \
     clientmodel.h \
+    faddmanager.h \
     mainwindow.h \
     managermodel.h
 
 FORMS += \
+    faddmanager.ui \
     mainwindow.ui
 
 # Default rules for deployment.
