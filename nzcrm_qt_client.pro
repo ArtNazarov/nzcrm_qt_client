@@ -12,20 +12,25 @@ SOURCES += \
     clientmodel.cpp \
     faddclient.cpp \
     faddmanager.cpp \
+    faddtask.cpp \
     main.cpp \
     mainwindow.cpp \
-    managermodel.cpp
+    managermodel.cpp \
+    taskmodel.cpp
 
 HEADERS += \
     clientmodel.h \
     faddclient.h \
     faddmanager.h \
+    faddtask.h \
     mainwindow.h \
-    managermodel.h
+    managermodel.h \
+    taskmodel.h
 
 FORMS += \
     faddclient.ui \
     faddmanager.ui \
+    faddtask.ui \
     mainwindow.ui
 
 # Default rules for deployment.

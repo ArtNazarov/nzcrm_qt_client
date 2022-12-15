@@ -12,6 +12,8 @@
 #include "clientmodel.h"
 #include "faddmanager.h"
 #include "faddclient.h"
+#include "taskmodel.h"
+#include "faddtask.h"
 
 void MainWindow::doConnection(QString host, int port, QString database_name, QString username, QString password)
 {
@@ -188,6 +190,7 @@ void MainWindow::uiElementsWatch()
       ui->btnDeleteManager->setEnabled(db.isOpen());
       ui->btnAddManager->setEnabled(db.isOpen());
       ui->btnAddClient->setEnabled(db.isOpen());
+      ui->btnAddTask->setEnabled(db.isOpen());
 
 
       QString text;
@@ -293,7 +296,7 @@ void MainWindow::on_btnAddManager_clicked()
     {
         showMessage("not added because canceled");
     };
-
+    delete dialog;
 
 
 
@@ -316,6 +319,27 @@ void MainWindow::on_btnAddClient_clicked()
     {
         showMessage("not added because canceled");
     };
+    delete dialog;
 
+}
+
+
+void MainWindow::on_btnAddTask_clicked()
+{
+    fAddTask *dialog = new fAddTask();
+    dialog->show();
+    if ( dialog->exec() == QDialog::Accepted ){
+        PairedMV MV = getByEnum(TableList::TASKS);
+        TaskModel* tm = new TaskModel();
+        tm->fields = dialog->getTask();
+        tm->insert(db);
+        delete tm;
+        MV.md->select();
+    }
+    else
+    {
+        showMessage("not added because canceled");
+    };
+    delete dialog;
 }
 

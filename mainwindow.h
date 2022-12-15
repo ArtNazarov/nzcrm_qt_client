@@ -62,6 +62,8 @@ private slots:
 
     void on_btnAddClient_clicked();
 
+    void on_btnAddTask_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -7,7 +7,7 @@ Features
 ========
 
 1. View and edit existing rows from managers, clients and tasks
-2. Append for managers table using dialog window, append to client table
+2. Append for managers table using dialog window, append to client table and tasks table
 3. Delete from managers, clients, tasks tables
 
 connection parameters to database in separate tab
@@ -20,7 +20,7 @@ https://github.com/ArtNazarov/nzvcrm
 
 1. Просмотр и правка существующих строк в таблицах
 менеджеры, клиенты, задачи
-2. Добавление новых записей в таблицы менеджеры, клиенты
+2. Добавление новых записей в таблицы менеджеры, клиенты, задачи
 3. Удаление существующих записей из таблиц менеджеры, клиенты, задачи
 
 настройки соединения на отдельной вкладке
@@ -36,3 +36,4 @@ https://github.com/ArtNazarov/nzvcrm
 ![](https://www.dropbox.com/s/28gfoieigbkxukd/add_client2.png?raw=1)
 ![](https://www.dropbox.com/s/t2kqaxc21ft58c8/add_client3.png?raw=1)
 ![](https://www.dropbox.com/s/rn1iddsvto9gg9o/add_manager.png?raw=1)
+![](https://www.dropbox.com/s/67zboe2vle8arg8/add_task_win.png?raw=1)
