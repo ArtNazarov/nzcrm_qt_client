@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>fAddClient</class>
+ <widget class="QDialog" name="fAddClient">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>589</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>430</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>571</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tabMainProps">
+    <attribute name="title">
+     <string>Tab 1</string>
+    </attribute>
+    <widget class="QWidget" name="formLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>531</width>
+       <height>351</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="lbName">
+        <property name="text">
+         <string>Имя клиента</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="leName"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lbInn">
+        <property name="text">
+         <string>ИНН</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="leInn"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lbKpp">
+        <property name="text">
+         <string>КПП</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="leKpp"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lbUadr">
+        <property name="text">
+         <string>Юр. адрес</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="leUadr"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lbFadr">
+        <property name="text">
+         <string>Факт. адрес</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="leFadr"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="lbRcv">
+        <property name="text">
+         <string>Грузополучатель</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="leRcv"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="lbPhone">
+        <property name="text">
+         <string>Телефон</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="lePhone"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="lbFax">
+        <property name="text">
+         <string>Факс</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="leFax"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="lbDirector">
+        <property name="text">
+         <string>Директор</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="leDirector"/>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="lbGlavBuh">
+        <property name="text">
+         <string>Главный бух</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="leGlavBuh"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tabStatusProps">
+    <attribute name="title">
+     <string>Tab 2</string>
+    </attribute>
+    <widget class="QWidget" name="formLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>541</width>
+       <height>351</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="lbEmail">
+        <property name="text">
+         <string>Email </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="leEmail"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lbSite">
+        <property name="text">
+         <string>Сайт</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="leSite"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lbSource">
+        <property name="text">
+         <string>Источник клиента</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="leSource"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lbStatus">
+        <property name="text">
+         <string>Статус</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="leStatus"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lbClientGroup">
+        <property name="text">
+         <string>Группа клиента</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="leClient_Group"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tabAdditionalProps">
+    <attribute name="title">
+     <string>Страница</string>
+    </attribute>
+    <widget class="QWidget" name="formLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>541</width>
+       <height>351</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="flAddClient">
+      <item row="0" column="0">
+       <widget class="QLabel" name="lbDoc_Num">
+        <property name="text">
+         <string>Номер договора</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="leDoc_Num"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lbDoc_Date">
+        <property name="text">
+         <string>Дата договора</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="leDoc_Date"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lbRs">
+        <property name="text">
+         <string>Рассчетный счет</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="leRs"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lbBank">
+        <property name="text">
+         <string>Банк</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="leBank"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lbKs">
+        <property name="text">
+         <string>Коррсчет</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="leKs"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="lbBik">
+        <property name="text">
+         <string>БИК</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="leBik"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>fAddClient</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>fAddClient</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -32,3 +32,4 @@ https://github.com/ArtNazarov/nzvcrm
 ![](https://www.dropbox.com/s/hyp6u8xohf4919q/nzcrm_qt2.png?raw=1)
 ![](https://www.dropbox.com/s/x44jobm42jfo8io/nzcrmqt_3.png?raw=1)
 ![](https://www.dropbox.com/s/ypc8kf804pwj916/nzcrm_add_manager_dlg.png?raw=1)
+![](https://www.dropbox.com/s/svd287dg269ecx7/clien_dlg.png?raw=1)

@@ -11,9 +11,14 @@
 #include "managermodel.h"
 #include "clientmodel.h"
 #include "faddmanager.h"
+#include "faddclient.h"
 
 void MainWindow::doConnection(QString host, int port, QString database_name, QString username, QString password)
 {
+
+
+
+
     if (""==host) return;
     if (""==database_name) return;
     if (""==username) return;
@@ -196,6 +201,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
+
     ui->setupUi(this);
     this->uiElementsWatch();
   }
@@ -295,10 +302,20 @@ void MainWindow::on_btnAddManager_clicked()
 
 void MainWindow::on_btnAddClient_clicked()
 {
-    PairedMV MV = getByEnum(TableList::CLIENTS);
-    ClientModel* cm = new ClientModel();
-    cm->insert(db);
-    delete cm;
-    MV.md->select();
+    fAddClient *dialog = new fAddClient();
+    dialog->show();
+    if ( dialog->exec() == QDialog::Accepted ){
+        PairedMV MV = getByEnum(TableList::CLIENTS);
+        ClientModel* cm = new ClientModel();
+        cm->fields = dialog->getClient();
+        cm->insert(db);
+        delete cm;
+        MV.md->select();
+    }
+    else
+    {
+        showMessage("not added because canceled");
+    };
+
 }
 

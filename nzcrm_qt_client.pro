@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     clientmodel.cpp \
+    faddclient.cpp \
     faddmanager.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -17,11 +18,13 @@ SOURCES += \
 
 HEADERS += \
     clientmodel.h \
+    faddclient.h \
     faddmanager.h \
     mainwindow.h \
     managermodel.h
 
 FORMS += \
+    faddclient.ui \
     faddmanager.ui \
     mainwindow.ui
 
